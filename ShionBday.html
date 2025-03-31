@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, pink, rgb(255, 102, 235));
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .slideshow img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .birthday-banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, rgb(255, 102, 235), bisque);
+            color: rgb(245, 236, 225);
+            font-size: 36px;
+            padding: 20px;
+        }
+
+        .video-container {
+            display: flex;
+            background: linear-gradient(to top, rgb(255, 102, 235), bisque);
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+        }
+
+        .slideshow .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .slideshow .arrow.previous {
+            left: 10px;
+        }
+
+        .slideshow .arrow.next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="birthday-banner">
+        <h1>Happy Birthday ShiOn</h1>
+        <p style="color: rgb(245, 236, 225);">A CUTE TIMELINE OF THE SMILE THAT TURNS THE WORLD COLOURFUL ShiOn</p>
+    </div>
+
+    <div class="youtube-video">
+        <div class="local-video">
+            <h3 style="color: rgb(255, 102, 235);">Video of lovely ShiOn Vocals</h3>
+            <iframe width="600" height="337" src="https://www.youtube.com/embed/qQhApeezAOU"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="youtube-video">
+            <h3 style="color: rgb(255, 102, 235);">ShiOn is revealed 29/12/23</h3>
+            <iframe width="600" height="337" src="https://www.youtube.com/embed/_OTK4AZ0uHc"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="youtube-video">
+            <h3 style="color: rgb(255, 102, 235);">ShiOn is welcomed into the Haus 24/01/24</h3>
+            <iframe width="600" height="337" src="https://www.youtube.com/embed/aD_wYDrZtu0?start=87"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        let images = document.querySelectorAll('.slideshow img');
+        let index = 0;
+
+        function showImage() {
+            for (let i = 0; i < images.length; i++) {
+                images[i].style.display = 'none';
+            }
+            images[index].style.display = 'block';
+        }
+
+        function showNextImage() {
+            index = (index + 1) % images.length;
+            showImage();
+        }
+
+        function showPreviousImage() {
+            index = (index - 1 + images.length) % images.length;
+            showImage();
+        }
+
+        document.querySelector('.arrow.next').addEventListener('click', showNextImage);
+        document.querySelector('.arrow.previous').addEventListener('click', showPreviousImage);
+
+        showImage();
+    </script>
+</body>
+
+</html>
